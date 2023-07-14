@@ -1,16 +1,19 @@
 // put variables here
+var opener = document.querySelector(".opener")
+var startBtn = document.querySelector(".startBtn")
+var quiz = document.querySelector(".quiz")
+quiz.style.display = "none"
+var question = document.querySelector(".question")
+var answerUl = document.querySelector(".answerUl")
+var score = 0;
+var index = 0;
 
-// create function for countdown timer
-function countDown() {
+//// create function for countdown timer
+//function countDown() {
     // create var and if statements for what happens when you complete quiz before timer
     // create else if/else statments for what happens if you do not complete quiz within 75seconds
         // create message that appears if time runs out "Time's Up!"
-};
-
-// create function to subtract time when answer selected is wrong
-function subractTime() {
-
-};
+//};
 
 var quizQuestions = [
     {
@@ -40,14 +43,25 @@ var quizQuestions = [
     },
 ]
 
-function generateScore() {
-
-   
-};
+function startQuiz(index) {
+    question.innerHTML = quizQuestions[index].question;
+    var answerSet = quizQuestions[index].choices
+    answerSet.forEach(function(i) {
+        var answerChoice = document.createElement("li");
+        answerChoice.innerHTML = i;
+        answerUl.append(answerChoice)
+        answerChoice.addEventListener("click", function() {
+            console.log(answerChoice.innerHTML)
+        })
+    })
+}
 
 // addEventListener for start quiz button
-startButton.addEventListener("click", function(event) {
-    countDown();
+startBtn.addEventListener("click", function(event) {
+    event.preventDefault()
+    opener.style.display = "none"
+    quiz.style.display = "block"
+    startQuiz(index)
 });
 
 // addEventListener and/or function for selecting and logging answers?
