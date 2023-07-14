@@ -5,6 +5,11 @@ var quiz = document.querySelector(".quiz")
 quiz.style.display = "none"
 var question = document.querySelector(".question")
 var answerUl = document.querySelector(".answerUl")
+var endGame = document.querySelector(".endGame")
+endGame.style.display = "none"
+var scoreValue = document.querySelector(".scoreValue")
+var initials = document.querySelector(".initials")
+var submitBtn = document.querySelector(".submitBtn")
 var score = 0;
 var index = 0;
 
@@ -43,7 +48,10 @@ var quizQuestions = [
     },
 ]
 
+console.log(quizQuestions.length)
+
 function startQuiz(index) {
+    answerUl.innerHTML = ""
     question.innerHTML = quizQuestions[index].question;
     var answerSet = quizQuestions[index].choices
     answerSet.forEach(function(i) {
@@ -51,8 +59,31 @@ function startQuiz(index) {
         answerChoice.innerHTML = i;
         answerUl.append(answerChoice)
         answerChoice.addEventListener("click", function() {
-            console.log(answerChoice.innerHTML)
+            if(answerChoice.innerHTML === quizQuestions[index].correct) {
+                score = score + 20
+                console.log(score)
+            } else {
+                // time = time - 10
+            }
+            index++
+            if(index >= quizQuestions.length - 1) {
+                index = 0
+                endQuiz()
+            } else {
+                startQuiz(index)
+            }
         })
+    })
+}
+
+function endQuiz() {
+    quiz.style.display = "none"
+    endGame.style.display = "block"
+    scoreValue.innerHTML = "You got a score of: " + score
+    submitBtn.addEventListener("click", function(event) {
+        event.preventDefault()
+        var initialsValue = initials.value
+        console.log(initialsValue)
     })
 }
 

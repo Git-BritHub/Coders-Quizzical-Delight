@@ -10,7 +10,6 @@ ul {
 li {
     list-style: none;
     margin: 10px;
-    width: 100px;
     background-color: rgb(7, 202, 202);
     border-radius: 6px;
     color: white;
