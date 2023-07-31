@@ -78,7 +78,7 @@ function startQuiz(index) {
                 score = score + 20
                 console.log(score)
             } else {
-                // time = time - 10
+                secondsLeft = secondsLeft - 10
             }
             index++
             if(index >= quizQuestions.length - 1) {
