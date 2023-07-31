@@ -12,13 +12,28 @@ var initials = document.querySelector(".initials")
 var submitBtn = document.querySelector(".submitBtn")
 var score = 0;
 var index = 0;
+var timerEl = document.querySelector(".timerEl");
+var secondsLeft = 75;
 
 //// create function for countdown timer
-//function countDown() {
-    // create var and if statements for what happens when you complete quiz before timer
-    // create else if/else statments for what happens if you do not complete quiz within 75seconds
+function countDown() {
+     // create var and if statements for what happens when you complete quiz before timer
+    var timerInterval = setInterval(function() {
+        secondsLeft--;
         // create message that appears if time runs out "Time's Up!"
-//};
+        timerEl.textContent = secondsLeft
+        if(secondsLeft === 0) {
+            // Stops execution of action at set interval
+            clearInterval(timerInterval);
+            alert("Time's Up!");
+            // add endQuiz() after alert for what happens if you do not complete quiz within 75seconds
+            endQuiz();
+            // create if or else statement for what happens when you complete quiz before timer
+          } 
+        }, 1000);
+};
+
+countDown();
 
 var quizQuestions = [
     {
@@ -76,6 +91,8 @@ function startQuiz(index) {
     })
 }
 
+var scoreHistory = JSON.parse(localStorage.getItem("scores")) || []
+
 function endQuiz() {
     quiz.style.display = "none"
     endGame.style.display = "block"
@@ -83,7 +100,12 @@ function endQuiz() {
     submitBtn.addEventListener("click", function(event) {
         event.preventDefault()
         var initialsValue = initials.value
-        console.log(initialsValue)
+        var playerObj = {
+            initial: initialsValue,
+            score: score
+        }
+        scoreHistory.push(playerObj)
+        localStorage.setItem("scores", JSON.stringify(scoreHistory))
     })
 }
 
