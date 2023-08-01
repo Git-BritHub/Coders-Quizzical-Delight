@@ -14,26 +14,31 @@ var score = 0;
 var index = 0;
 var timerEl = document.querySelector(".timerEl");
 var secondsLeft = 75;
+var gameOver = false;
 
 //// create function for countdown timer
 function countDown() {
-     // create var and if statements for what happens when you complete quiz before timer
-    var timerInterval = setInterval(function() {
+    // create var and if statements for what happens when you complete quiz before timer
+    var timerInterval = setInterval(function () {
         secondsLeft--;
         // create message that appears if time runs out "Time's Up!"
         timerEl.textContent = secondsLeft
-        if(secondsLeft === 0) {
-            // Stops execution of action at set interval
-            clearInterval(timerInterval);
-            alert("Time's Up!");
-            // add endQuiz() after alert for what happens if you do not complete quiz within 75seconds
-            endQuiz();
-            // create if or else statement for what happens when you complete quiz before timer
-          } 
-        }, 1000);
-};
 
-countDown();
+    if (secondsLeft === 0) {
+        // Stops execution of action at set interval
+        // clearInterval(timerInterval);
+        if (index !== 4) {
+            alert("Time's Up!");
+        }
+        // add endQuiz() after alert for what happens if you do not complete quiz within 75seconds
+        endQuiz();
+    }
+    
+    if(gameOver) {
+        clearInterval(timerInterval);
+        }   
+    }, 1000);
+};
 
 var quizQuestions = [
     {
@@ -59,29 +64,32 @@ var quizQuestions = [
     {
         question: "A very useful tool used during development and debugging for printing content to the debugger is:",
         choices: ["1. JavaScript", "2. Terminal/Bash", "3. for loops", "4. console.log"],
-        correct: "3. console.log"
+        correct: "4. console.log"
     },
 ]
 
 console.log(quizQuestions.length)
 
 function startQuiz(index) {
+    if (index === 0) {
+        countDown();
+    }
     answerUl.innerHTML = ""
     question.innerHTML = quizQuestions[index].question;
     var answerSet = quizQuestions[index].choices
-    answerSet.forEach(function(i) {
+    answerSet.forEach(function (i) {
         var answerChoice = document.createElement("li");
         answerChoice.innerHTML = i;
         answerUl.append(answerChoice)
-        answerChoice.addEventListener("click", function() {
-            if(answerChoice.innerHTML === quizQuestions[index].correct) {
+        answerChoice.addEventListener("click", function () {
+            if (answerChoice.innerHTML === quizQuestions[index].correct) {
                 score = score + 20
                 console.log(score)
             } else {
                 secondsLeft = secondsLeft - 10
             }
             index++
-            if(index >= quizQuestions.length - 1) {
+            if (index === quizQuestions.length) {
                 index = 0
                 endQuiz()
             } else {
@@ -97,7 +105,7 @@ function endQuiz() {
     quiz.style.display = "none"
     endGame.style.display = "block"
     scoreValue.innerHTML = "You got a score of: " + score
-    submitBtn.addEventListener("click", function(event) {
+    submitBtn.addEventListener("click", function (event) {
         event.preventDefault()
         var initialsValue = initials.value
         var playerObj = {
@@ -107,18 +115,13 @@ function endQuiz() {
         scoreHistory.push(playerObj)
         localStorage.setItem("scores", JSON.stringify(scoreHistory))
     })
+    gameOver = true;
 }
 
 // addEventListener for start quiz button
-startBtn.addEventListener("click", function(event) {
+startBtn.addEventListener("click", function (event) {
     event.preventDefault()
     opener.style.display = "none"
     quiz.style.display = "block"
     startQuiz(index)
 });
-
-// addEventListener and/or function for selecting and logging answers?
-
-// addEventListener and/or function for generating score?
-
-// addEventListener and/or function for saving initials and score.
