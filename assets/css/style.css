@@ -10,7 +10,7 @@ header {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin: 0 1px;
+    margin: 0 1px 50px 1px;
 }
 
 body {
@@ -18,7 +18,6 @@ body {
 }
 
 .highScoresBtn {
-    /* font-family: 'Press Start 2P', cursive; */
     font-size: 10px;
     color: white;
     background: linear-gradient(#0000FF00, #8000FF80, #FF00FFFF);
@@ -45,13 +44,22 @@ body {
 }
 
 .timerEl {
-    margin-right: 50px;
+    margin-right: 40px;
     margin-top: 30px;
 }
 
+.startBtnPosition {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .startBtn {
+    font-size: 25px;
     background-color: black;
     color: aqua;
+    border-width: 5px;
     border-color: #FF00FFFF;
     border-radius: 3px;
     text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
@@ -59,14 +67,11 @@ body {
 }
 
 .startBtn:hover {
-    box-shadow: 2px 2px 0px aqua;
+    color: yellow;
+    box-shadow: 3px 3px 0px aqua;
 }
 .startBtn:active {
-    box-shadow: 
-    0px 0px 6px #00ff,
-    1px 1px 12px #ffffa4,
-    2px 2px 20px #fde53b,
-    2px 2px 30px red;
+    box-shadow: 3px 3px 0 yellow;
 }
 
 .submitBtn {
@@ -85,5 +90,3 @@ li {
     color: white;
     padding: 3px;
 }
-
-/* add pointer cursor when selecting answer and make it more pretty when I get a chance */
