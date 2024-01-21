@@ -8,6 +8,11 @@ header {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin: 0 1px;
+}
+
+body {
+    margin: 5px 30px;
 }
 
 .timerEl {
