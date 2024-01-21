@@ -15,6 +15,24 @@ header {
     margin-top: 5px;
 }
 
+.startBtn {
+    background-color: black;
+    color: aqua;
+    border-radius: 5px;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+    padding: 5px 10px;
+    box-shadow: 0px 0px 10px aqua;
+}
+
+.startBtn:hover {
+    box-shadow: 0px 0px 20px aqua;
+
+}
+
+.submitBtn {
+    color: aqua;
+}
+
 ul {
     padding: 0;
 }
