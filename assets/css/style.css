@@ -17,9 +17,36 @@ body {
     margin: 5px 30px;
 }
 
+.highScoresBtn {
+    /* font-family: 'Press Start 2P', cursive; */
+    font-size: 10px;
+    color: white;
+    background: linear-gradient(#0000FF00, #8000FF80, #FF00FFFF);
+    background-size: 300% 300%;
+    border: 2px solid #00FFFF;
+    text-shadow: 1px 1px 2px black;
+    padding: 7px;
+    border-radius: 3px;
+    outline: none;
+    transition: background-color 0.3s, color 0.3s;
+    animation: gradientBG 5s ease infinite;
+}
+
+.highScoresBtn:hover {
+    background-color: #00FFFF;
+    color: aqua;
+    text-shadow: 1px 1px 2px black;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
 .timerEl {
     margin-right: 50px;
-    margin-top: 5px;
+    margin-top: 30px;
 }
 
 .startBtn {
