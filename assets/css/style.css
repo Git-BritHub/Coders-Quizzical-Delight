@@ -52,18 +52,18 @@ body {
 .startBtn {
     background-color: black;
     color: aqua;
-    border-radius: 5px;
+    border-color: #FF00FFFF;
+    border-radius: 3px;
     text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
-    padding: 5px 10px;
-    box-shadow: 0px 0px 10px aqua;
+    padding:10px;
 }
 
 .startBtn:hover {
-    box-shadow: 0px 0px 20px aqua;
+    box-shadow: 2px 2px 0px aqua;
 }
 .startBtn:active {
     box-shadow: 
-    0px 0px 5px #00ff,
+    0px 0px 6px #00ff,
     1px 1px 12px #ffffa4,
     2px 2px 20px #fde53b,
     2px 2px 30px red;
