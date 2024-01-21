@@ -1,5 +1,5 @@
 # Coders-Quizzical-Delight
-A simple code quiz showcasing Web API usage
+A simple coding quiz showcasing Web API usage
 ## Links
 [GitHub Repo](https://github.com/Git-BritHub/Coders-Quizzical-Delight.git)
 <br />
@@ -10,6 +10,3 @@ A coder wanting to test their knowledge of basic programming skills may take thi
 
 ## Usage
 ![alt text](assets/images/screenshot.png)
-
-## Credits
-Sought guidance and feedback from the U of U's software developer tutors.
